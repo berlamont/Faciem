@@ -2,37 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Plugin.Connectivity;
 using Xamarin.Forms;
 
 namespace Faciem
 {
 	public class App : Application
 	{
+		internal static bool IsConnected;
 		public App()
 		{
-			// The root page of your application
-			var content = new ContentPage
-			{
-				Title = "Faciem",
-				Content = new StackLayout
-				{
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
-
-			MainPage = new NavigationPage(content);
+			CrossConnectivity.Current.ConnectivityChanged += (sender, e) => { IsConnected = e.IsConnected; };
+			MainPage = new NavigationPage(new Faciem());
 		}
 
 		protected override void OnStart()
 		{
-			// Handle when your app starts
+			IsConnected = CrossConnectivity.Current.IsConnected;
 		}
 
 		protected override void OnSleep()
@@ -42,7 +28,7 @@ namespace Faciem
 
 		protected override void OnResume()
 		{
-			// Handle when your app resumes
+			IsConnected = CrossConnectivity.Current.IsConnected;
 		}
 	}
 }

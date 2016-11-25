@@ -39,6 +39,11 @@
     <Compile Include="Faciem.xaml.cs">
       <DependentUpon>Faciem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\BaseViewModel.cs" />
+    <Compile Include="Infrastructure\Grouping.cs" />
+    <Compile Include="Infrastructure\ObservableCollection.cs" />
+    <Compile Include="Infrastructure\ObservableObject.cs" />
+    <Compile Include="Infrastructure\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
