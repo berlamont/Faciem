@@ -21,7 +21,7 @@ namespace Faciem.UWP
 		{
 			this.InitializeComponent();
 
-			LoadApplication(new Faciem.App());
+			LoadApplication(new global::Faciem.App());
 		}
 	}
 }

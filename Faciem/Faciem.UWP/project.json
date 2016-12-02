@@ -1,5 +1,7 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Azure.Mobile.Analytics": "0.2.1",
+    "Microsoft.Azure.Mobile.Crashes": "0.2.1",
     "Microsoft.Bcl.Build": "1.0.21",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Xam.Plugin.Connectivity": "2.2.12",

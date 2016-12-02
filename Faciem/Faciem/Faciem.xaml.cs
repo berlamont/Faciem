@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Faciem.Data;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Plugin.Connectivity;
@@ -13,28 +14,24 @@ namespace Faciem
 	public partial class Faciem
 	{
 		readonly VisionServiceClient visionClient;
+
 		public Faciem()
 		{
 			InitializeComponent();
-			visionClient = new VisionServiceClient("9b90f7f4a3de4d928d8ed2105806d263");
+			visionClient = new VisionServiceClient(ApiKey.API_KEY);
 		}
+
 		async Task<AnalysisResult> AnalyzePictureAsync(Stream inputFile)
 		{
-
 			if (!CrossConnectivity.Current.IsConnected)
 			{
-				await DisplayAlert("Network error",
-					"Please check your network connection and retry.", "OK");
+				await DisplayAlert("Network error", "Please check your network connection and retry.", "OK");
 				return null;
 			}
 
-			var visualFeatures = new VisualFeature[] { VisualFeature.Adult,
-				VisualFeature.Categories, VisualFeature.Color, VisualFeature.Description,
-				VisualFeature.Faces, VisualFeature.ImageType, VisualFeature.Tags };
+			var visualFeatures = new[] {VisualFeature.Adult, VisualFeature.Categories, VisualFeature.Color, VisualFeature.Description, VisualFeature.Faces, VisualFeature.ImageType, VisualFeature.Tags};
 
-			AnalysisResult analysisResult =
-				await visionClient.AnalyzeImageAsync(inputFile,
-				visualFeatures);
+			var analysisResult = await visionClient.AnalyzeImageAsync(inputFile, visualFeatures);
 
 			return analysisResult;
 		}
@@ -49,11 +46,7 @@ namespace Faciem
 				return;
 			}
 
-			var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-			{
-				SaveToAlbum = true,
-				Name = "test.jpg"
-			});
+			var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions {PhotoSize = PhotoSize.Small, SaveToAlbum = true, CompressionQuality = 85, Name = "test.jpg"});
 
 			if (file == null)
 				return;
@@ -91,7 +84,6 @@ namespace Faciem
 			catch (Exception ex)
 			{
 				await DisplayAlert("Error", ex.Message, "OK");
-				return;
 			}
 			finally
 			{

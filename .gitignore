@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Faciem/Faciem.iOS/MobileCenterFrameworks/CrashReporter.framework/CrashReporter
+/Faciem/Faciem/Data/apikey.cs
+/Faciem/Faciem.Droid/comments.xml
