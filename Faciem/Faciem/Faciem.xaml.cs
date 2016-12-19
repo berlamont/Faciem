@@ -19,6 +19,7 @@ namespace Faciem
 		{
 			InitializeComponent();
 			visionClient = new VisionServiceClient(ApiKey.API_KEY);
+			
 		}
 
 		async Task<AnalysisResult> AnalyzePictureAsync(Stream inputFile)
@@ -69,7 +70,7 @@ namespace Faciem
 				return;
 			}
 
-			var file = await CrossMedia.Current.PickPhotoAsync();
+			var file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions() {CompressionQuality = 85, PhotoSize = PhotoSize.Small});
 			if (file == null)
 				return;
 

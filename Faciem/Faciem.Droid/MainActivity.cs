@@ -22,7 +22,7 @@ namespace Faciem.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-			MobileCenter.Configure("60ac7aa8-5d04-4bfb-a056-9c40afa71105");
+		//	MobileCenter.Configure("60ac7aa8-5d04-4bfb-a056-9c40afa71105");
 			LoadApplication(new App());
 		}
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

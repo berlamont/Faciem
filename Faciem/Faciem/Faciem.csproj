@@ -45,6 +45,7 @@
       <DependentUpon>Faciem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\BaseViewModel.cs" />
+    <Compile Include="Infrastructure\OxfordException.cs" />
     <Compile Include="Infrastructure\Grouping.cs" />
     <Compile Include="Infrastructure\ObservableCollection.cs" />
     <Compile Include="Infrastructure\ObservableObject.cs" />

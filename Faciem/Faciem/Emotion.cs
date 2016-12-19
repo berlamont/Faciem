@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Faciem.Data;
+using Faciem.Infrastructure;
 using Microsoft.ProjectOxford.Emotion;
 
 namespace Faciem
@@ -16,7 +17,7 @@ namespace Faciem
 			var emotionResults = await emotionClient.RecognizeAsync(stream);
 
 			if ((emotionResults != null) && emotionResults.Any()) return emotionResults;
-			throw new Exception("Can't detect face");
+			throw new OxfordException("Can't detect face");
 		}
 
 		//Average happiness calculation in case of multiple people
@@ -35,8 +36,8 @@ namespace Faciem
 			var result = Math.Round(score, 2);
 
 			if (score >= 50)
-				return result + " % :-)";
-			return result + "% :-(";
+				return result + " % :-) (happy durp)";
+			return result + "% :-( (durp sad)";
 		}
 	}
 }
