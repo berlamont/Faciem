@@ -18,7 +18,7 @@ namespace Faciem
 		public Faciem()
 		{
 			InitializeComponent();
-			visionClient = new VisionServiceClient(ApiKey.API_KEY);
+			visionClient = new VisionServiceClient(ApiKey.OXFORD_API_KEY);
 			
 		}
 
@@ -30,7 +30,7 @@ namespace Faciem
 				return null;
 			}
 
-			var visualFeatures = new[] {VisualFeature.Adult, VisualFeature.Categories, VisualFeature.Color, VisualFeature.Description, VisualFeature.Faces, VisualFeature.ImageType, VisualFeature.Tags};
+			var visualFeatures = new[] { VisualFeature.Categories,VisualFeature.Description, VisualFeature.Faces, VisualFeature.ImageType, VisualFeature.Tags};
 
 			var analysisResult = await visionClient.AnalyzeImageAsync(inputFile, visualFeatures);
 
@@ -43,7 +43,7 @@ namespace Faciem
 
 			if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
 			{
-				await DisplayAlert("No Camera", "No camera available.", "OK");
+				await DisplayAlert("Camera Not Available", "No camera available.", "OK");
 				return;
 			}
 

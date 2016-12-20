@@ -12,11 +12,11 @@ namespace Faciem
 	{
 		static async Task<Microsoft.ProjectOxford.Emotion.Contract.Emotion[]> GetHappinessAsync(Stream stream)
 		{
-			var emotionClient = new EmotionServiceClient(ApiKey.API_KEY);
+			var emotionClient = new EmotionServiceClient(ApiKey.OXFORD_API_KEY);
 
 			var emotionResults = await emotionClient.RecognizeAsync(stream);
 
-			if ((emotionResults != null) && emotionResults.Any()) return emotionResults;
+			if (emotionResults != null && emotionResults.Any()) return emotionResults;
 			throw new OxfordException("Can't detect face");
 		}
 
@@ -36,8 +36,8 @@ namespace Faciem
 			var result = Math.Round(score, 2);
 
 			if (score >= 50)
-				return result + " % :-) (happy durp)";
-			return result + "% :-( (durp sad)";
+				return result + " % :-) (you look happy durp)";
+			return result + "% :-( (durp you look sad)";
 		}
 	}
 }

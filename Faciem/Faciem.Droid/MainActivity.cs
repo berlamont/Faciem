@@ -2,10 +2,8 @@
 
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Faciem.Data;
 using Microsoft.Azure.Mobile;
 using Plugin.Permissions;
 
@@ -22,7 +20,7 @@ namespace Faciem.Droid
 			base.OnCreate(bundle);
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
-		//	MobileCenter.Configure("60ac7aa8-5d04-4bfb-a056-9c40afa71105");
+			MobileCenter.Configure(ApiKey.MOBILE_CENTER_API_KEY);
 			LoadApplication(new App());
 		}
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

@@ -1,35 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Faciem.Faciem">
+             x:Class="Faciem.Faciem"
+			 Title="Describe">
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 	</ContentPage.Padding>
 	<StackLayout Orientation="Vertical">
-		<Button x:Name="TakePicture" Clicked="TakePictureButton_Clicked" Text="Take Picture" />
-		<Button x:Name="SelectPicture" Clicked="UploadPictureButton_Clicked" Text="Upload Picture" />
+	
 		<ActivityIndicator x:Name="Progress" IsRunning="false" IsVisible="false" />
 		<Image x:Name="Image1" WidthRequest="350" HeightRequest="250" />
 		<ScrollView Padding="10">
 			<StackLayout>
 				<StackLayout Orientation="Horizontal">
-					<Label Text="Adult: " />
-					<Label Text="{Binding Adult.IsAdultContent}" />
-				</StackLayout>
-				<StackLayout Orientation="Horizontal">
-					<Label Text="NSFW: " />
-					<Label Text="{Binding Adult.IsRacyContent}" />
-				</StackLayout>
-				<StackLayout Orientation="Horizontal">
-					<Label Text="Description: " />
+					<Label Text="Description " />
 					<Label Text="{Binding Description.Captions[0].Text}" />
 				</StackLayout>
 				<StackLayout Orientation="Horizontal">
-					<Label Text="Accent color: " />
-					<Label Text="{Binding Color.AccentColor}" />
+					<Label Text="Faces? " />
+					<Label Text="{Binding Faces}" />
 				</StackLayout>
 				<StackLayout Orientation="Horizontal">
-					<Label Text="Tags: " />
+					<Label Text="Tags " />
 					<ListView ItemsSource="{Binding Tags}">
 						<ListView.ItemTemplate>
 							<DataTemplate>
@@ -42,6 +34,8 @@
 				</StackLayout>
 			</StackLayout>
 		</ScrollView>
+		<Button x:Name="TakePicture" Clicked="TakePictureButton_Clicked" Text="Take Picture" />
+		<Button x:Name="SelectPicture" Clicked="UploadPictureButton_Clicked" Text="Upload Picture" />
 	</StackLayout>
 </ContentPage>
 

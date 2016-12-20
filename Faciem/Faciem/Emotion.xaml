@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Faciem.Emotion">
-	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="Faciem.Emotion"
+			 Title="Emotion">
+	<ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+	</ContentPage.Padding>
+	<StackLayout Orientation="Vertical">
+		<ActivityIndicator x:Name="Progress" IsRunning="false" IsVisible="false" />
+		<Image x:Name="Image1" WidthRequest="350" HeightRequest="250" />
+		<ScrollView Padding="10">
+			<StackLayout>
+				<StackLayout Orientation="Horizontal">
+					<Label Text="Detail: " />
+					<Label Text="{Binding .}" />
+				</StackLayout>
+			</StackLayout>
+		</ScrollView>
+		<Button x:Name="TakePicture" Clicked="TakePictureButton_Clicked" Text="Take Picture" />
+		<Button x:Name="SelectPicture" Clicked="UploadPictureButton_Clicked" Text="Upload Picture" />
+	</StackLayout>
 </ContentPage>
+

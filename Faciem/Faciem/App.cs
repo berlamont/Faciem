@@ -12,8 +12,8 @@ namespace Faciem
 		public App()
 		{
 			CrossConnectivity.Current.ConnectivityChanged += (sender, e) => { IsConnected = e.IsConnected; };
-		//	MobileCenter.Start(typeof(Analytics), typeof(Crashes));
-			MainPage = new NavigationPage(new Faciem());
+			MobileCenter.Start(typeof(Analytics), typeof(Crashes));
+			MainPage = new NavigationPage(new MainPage());
 
 		}
 
