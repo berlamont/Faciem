@@ -7,7 +7,7 @@
 		<OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
 	</ContentPage.Padding>
 	<StackLayout Orientation="Vertical">
-	
+
 		<ActivityIndicator x:Name="Progress" IsRunning="false" IsVisible="false" />
 		<Image x:Name="Image1" WidthRequest="350" HeightRequest="250" />
 		<ScrollView Padding="10">

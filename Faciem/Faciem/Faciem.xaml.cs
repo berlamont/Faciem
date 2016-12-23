@@ -19,6 +19,7 @@ namespace Faciem
 		{
 			InitializeComponent();
 			visionClient = new VisionServiceClient(ApiKey.OXFORD_API_KEY);
+			BindingContext = this;
 			
 		}
 
@@ -31,7 +32,7 @@ namespace Faciem
 			}
 
 			var visualFeatures = new[] { VisualFeature.Categories,VisualFeature.Description, VisualFeature.Faces, VisualFeature.ImageType, VisualFeature.Tags};
-
+		
 			var analysisResult = await visionClient.AnalyzeImageAsync(inputFile, visualFeatures);
 
 			return analysisResult;
@@ -82,9 +83,9 @@ namespace Faciem
 			{
 				BindingContext = await AnalyzePictureAsync(file.GetStream());
 			}
-			catch (Exception ex)
+			catch (ClientException ex)
 			{
-				await DisplayAlert("Error", ex.Message, "OK");
+				await DisplayAlert("Error", ex.Error.Code + " " + ex.Error.Message, "OK");
 			}
 			finally
 			{

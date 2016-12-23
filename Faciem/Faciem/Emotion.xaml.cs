@@ -11,6 +11,7 @@ namespace Faciem
 		public Emotion()
 		{
 			InitializeComponent();
+			BindingContext = this;
 		}
 		async void TakePictureButton_Clicked(object sender, EventArgs e)
 		{
